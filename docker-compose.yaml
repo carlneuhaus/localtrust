@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  local-doh:
+    container_name: doh
+    image: visibilityspots/cloudflared:amd64
+    restart: unless-stopped
+    environment: 
+      - UPSTREAM1=https://lqt3o5obuw.cloudflare-gateway.com/dns-query
+      - UPSTREAM2=https://lqt3o5obuw.cloudflare-gateway.com/dns-query
+      - PORT=53
+    ports:
+      - "127.0.0.1:53:53/udp"
